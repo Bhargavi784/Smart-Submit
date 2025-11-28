@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SmartSubmit — Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-md bg-white shadow-lg rounded-2xl p-6">
+    <h1 class="text-2xl font-semibold text-center text-blue-600 mb-4">SmartSubmit</h1>
+    <div id="login-card">
+      <label class="block text-sm text-gray-600">Email</label>
+      <input id="email" type="email" class="w-full mt-1 p-2 border rounded-lg" placeholder="you@example.com">
+      <label class="block text-sm text-gray-600 mt-3">Password</label>
+      <input id="password" type="password" class="w-full mt-1 p-2 border rounded-lg" placeholder="password">
+      <label class="block text-sm text-gray-600 mt-3">Role</label>
+      <select id="role" class="w-full mt-1 p-2 border rounded-lg">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+      <button onclick="login()" class="mt-5 w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700">Login</button>
+      <p class="text-center text-sm mt-4 text-gray-600">
+        New here? <a href="#" onclick="showSignup()" class="text-blue-600">Create account</a>
+      </p>
+    </div>
+    <div id="signup-card" class="hidden">
+      <label class="block text-sm text-gray-600">Name</label>
+      <input id="su-name" type="text" class="w-full mt-1 p-2 border rounded-lg" placeholder="Your name">
+      <label class="block text-sm text-gray-600 mt-3">Email</label>
+      <input id="su-email" type="email" class="w-full mt-1 p-2 border rounded-lg" placeholder="you@example.com">
+      <label class="block text-sm text-gray-600 mt-3">Password</label>
+      <input id="su-password" type="password" class="w-full mt-1 p-2 border rounded-lg" placeholder="password">
+      <label class="block text-sm text-gray-600 mt-3">Role</label>
+      <select id="su-role" class="w-full mt-1 p-2 border rounded-lg">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+      <button onclick="signup()" class="mt-5 w-full bg-green-600 text-white p-2 rounded-lg hover:bg-green-700">Sign up</button>
+      <p class="text-center text-sm mt-4 text-gray-600">
+        Already have account? <a href="#" onclick="showLogin()" class="text-blue-600">Login</a>
+      </p>
+    </div>
+  </div>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

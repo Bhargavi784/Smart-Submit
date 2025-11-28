@@ -1,0 +1,40 @@
+# === Python / FastAPI ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.db
+
+# Virtual environment
+venv/
+.venv/
+
+# Environment variables
+.env
+.env.*
+
+# FastAPI auto-generated files
+instance/
+*.sqlite3
+
+# === Node.js / Frontend ===
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+dist/
+build/
+.cache/
+
+# === OS Generated ===
+.DS_Store
+Thumbs.db
+
+# === VS Code ===
+.vscode/
+*.code-workspace
+
+# === Logs ===
+*.log
+logs/

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submit Assignment</title>
+  <script defer src="js/utils.js"></script>
+  <script defer src="js/submission.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+  <div class="max-w-3xl mx-auto mt-10 bg-white shadow p-8 rounded-xl">
+
+    <h2 class="text-3xl font-bold mb-6 text-blue-600">Submit Assignment</h2>
+
+    <input type="file" id="pdfFile" accept="application/pdf"
+      class="mt-4 border p-2 w-full rounded" />
+
+    <button onclick="uploadSubmission()"
+      class="mt-5 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
+      Upload for AI Feedback
+    </button>
+
+    <p id="status" class="mt-4 text-green-600 font-semibold"></p>
+
+    <!-- Feedback Section -->
+    <div id="feedback" class="mt-8 hidden">
+      <h3 class="text-2xl font-bold mb-4 border-b pb-2">AI Feedback</h3>
+
+      <!-- Margin Feedback -->
+      <div id="marginResult" class="mb-6 p-4 border rounded bg-gray-50"></div>
+
+      <!-- Grammar Feedback -->
+      <div>
+        <h4 class="text-xl font-semibold mb-2">Grammar Suggestions</h4>
+        <ul id="grammarList" class="list-disc ml-6 text-gray-700"></ul>
+      </div>
+
+      <button onclick="submitToTeacher()" 
+        class="mt-6 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        Submit to Teacher
+      </button>
+    </div>
+    <div id="teacherReview" class="hidden mt-6 bg-white p-4 rounded shadow border">
+  <h3 class="text-xl font-semibold mb-2">Teacher Review</h3>
+  <p><strong>Grade:</strong> <span id="teacherGrade"></span></p>
+  <p><strong>Feedback:</strong></p>
+  <p id="teacherComment" class="bg-gray-100 p-2 rounded"></p>
+  <div id="teacher-feedback" class="mt-6 p-4 rounded bg-blue-50 border border-blue-200 hidden"></div>
+
+</div>
+
+  </div>
+
+</body>
+</html>
