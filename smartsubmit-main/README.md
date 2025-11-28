@@ -131,3 +131,171 @@ assignments_count
 ✅ Core backend fully stable
 ✅ Ready for complete frontend development
 ✅ Submission + grading + file download tested
+
+# 🎨 **Frontend – SmartSubmit (HTML + TailwindCSS + JavaScript)**
+
+The frontend of SmartSubmit is built using **HTML**, **Tailwind CSS**, and **JavaScript**, and is served directly through FastAPI using `StaticFiles`.
+All pages, scripts, and assets live inside:
+
+```
+backend/app/static/
+```
+
+This keeps the entire project (frontend + backend + file handling) running on a single server for easy development and deployment.
+
+---
+
+## 📁 **Frontend Folder Structure**
+
+```
+backend/
+└── app/
+    ├── routers/
+    ├── schemas/
+    ├── static/
+    │   ├── js/
+    │   │   ├── auth.js
+    │   │   ├── classroom.js
+    │   │   ├── create_assignment.js
+    │   │   ├── dashboard.js
+    │   │   ├── submission.js
+    │   │   ├── teacher_submissions.js
+    │   │   └── utils.js
+    │   ├── index.html
+    │   ├── dashboard.html
+    │   ├── classroom.html
+    │   ├── create_assignment.html
+    │   ├── submission.html
+    │   └── teacher_submissions.html
+    ├── main.py
+    └── uploads/
+```
+
+---
+
+## ✅ **Frontend Features**
+
+### 🔐 Authentication
+
+* Login using email & password
+* JWT token saved in `localStorage`
+* Users redirected based on role (teacher / student)
+* Token auto-attached to every protected API call
+
+### 🏫 Classroom Pages
+
+* Students: Join classroom using join code
+* Teachers: Create classrooms
+* Both roles: View classroom list with
+
+  * `students_count`
+  * `assignments_count`
+
+### 📝 Assignments
+
+* Teacher: Create assignments
+* Student: View assignments linked to classroom
+* Dynamic rendering using JavaScript fetch calls
+
+### 📤 Submissions
+
+* Students upload files (`multipart/form-data`)
+* Students view previous submissions
+* Teachers view all submissions per classroom
+* Teachers grade submissions
+* Secure file download buttons for teacher & student
+
+---
+
+## 📡 **API Integration (Frontend → Backend)**
+
+### Authorization Header
+
+```
+Authorization: Bearer <token>
+```
+
+### Example GET Request
+
+```js
+fetch(`${BASE_URL}/classrooms`, {
+  headers: {
+    "Authorization": "Bearer " + localStorage.getItem("token")
+  }
+});
+```
+
+### Example File Upload Request
+
+```js
+const formData = new FormData();
+formData.append("file", fileInput.files[0]);
+
+fetch(`${BASE_URL}/submissions/upload/${assignmentId}`, {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer " + localStorage.getItem("token")
+  },
+  body: formData
+});
+```
+
+---
+
+## ▶️ **How to Run the Frontend**
+
+The frontend needs **no separate server**.
+
+Start the FastAPI backend:
+
+```
+uvicorn app.main:app --reload
+```
+
+Then open:
+
+```
+http://127.0.0.1:8000/static/index.html
+```
+
+All HTML pages load directly from the static directory:
+
+* `/static/index.html`
+* `/static/dashboard.html`
+* `/static/create_assignment.html`
+* `/static/classroom.html`
+* `/static/submission.html`
+* `/static/teacher_submissions.html`
+
+---
+
+## 🌐 **Base API URL Configuration**
+
+Inside `utils.js` (or at the top of each JS file):
+
+```js
+const BASE_URL = "http://127.0.0.1:8000";
+```
+
+---
+
+## 🧭 **Frontend Flow**
+
+```
+Login → Dashboard → Classroom → Assignment → Submission
+```
+
+Matches backend structure:
+
+```
+Classroom → Assignment → Submission
+```
+
+---
+
+## 🟢 **Frontend Status**
+
+✔ Fully functional
+✔ Integrated with backend
+✔ All main workflows complete
+✔ Ready for deployment
